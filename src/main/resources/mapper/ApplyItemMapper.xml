@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.bosssoft.dao.ApplyItemDao">
+
+    <!--这是一个查询语句-->
+    <select id="queryOrderItem" resultType="ApplyItem">
+        select * from applyitem
+    </select>
+
+    <!--这是一个删除语句-->
+    <delete id="deleteOrderItem" parameterType="int">
+        delete from applyitem where id = #{id}
+    </delete>
+    <!--这是一个插入语句-->
+    <insert id="addOrderItem" parameterType="ApplyItem">
+        insert into applyitem (id,goodsId,goodsName,goodsType,number,palace,usedate)
+        values (#{id},#{goodsId},#{goodsName},#{goodsType},#{number},#{palace},#{usedate})
+    </insert>
+    <!--这是一个更新语句-->
+    <update id="updateOrderItem" parameterType="ApplyItem">
+        update applyitem set goodsId=#{goodsId},goodsName=#{goodsName},goodsType=#{goodsType},number=#{number},palace=#{palace},usedate=#{usedate}
+        where id = #{id}
+    </update>
+</mapper>

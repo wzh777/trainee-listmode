@@ -5,5 +5,5 @@ package com.bosssoft.service;
  * @date 2020/7/9
  * @description
  */
-public class GoodService {
+public interface GoodService {
 }

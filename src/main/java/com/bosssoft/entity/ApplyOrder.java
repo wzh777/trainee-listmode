@@ -2,6 +2,7 @@ package com.bosssoft.entity;
 
 import lombok.Data;
 
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -19,7 +20,7 @@ public class ApplyOrder {
     /**
      * 申请时间
      */
-    private Data applyTime;
+    private Date applyTime;
     /**
      * 申请人
      */

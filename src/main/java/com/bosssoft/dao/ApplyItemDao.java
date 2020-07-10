@@ -14,8 +14,8 @@ import java.util.List;
 @Mapper
 @Repository
 public interface ApplyItemDao {
-    List<ApplyItem> queryOrderItem();
-    boolean addOrderItem(ApplyItem applyItem);
-    boolean updateOrderItem(ApplyItem applyItem);
-    boolean deleteOrderItem(int id);
+    List<ApplyItem> queryApplyItem();
+    boolean addApplyItem(ApplyItem applyItem);
+    boolean updateApplyItem(ApplyItem applyItem);
+    boolean deleteApplyItem(int id);
 }

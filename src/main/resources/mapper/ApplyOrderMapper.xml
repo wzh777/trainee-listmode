@@ -6,6 +6,25 @@
 <!--绑定一个对应的Dao/Mapper接口-->
 <mapper namespace="com.bosssoft.dao.ApplyOrderDao">
 
+<!--    <resultMap id="ApplyInfo" type="ApplyOrder">-->
+<!--        <id property="id" column="id"/>-->
+<!--        <result property="applyDepartment" column="applyDepartment"/>-->
+<!--        <result property="applyTime" column="applyTime"/>-->
+<!--        <result property="applyName" column="applyName"/>-->
+<!--        <result property="generalManagerOpinion" column="generalManagerOpinion"/>-->
+<!--        <result property="mineManagerOpinion" column="mineManagerOpinion"/>-->
+<!--        <result property="departmentOpinion" column="departmentOpinion"/>-->
+<!--        <result property="warehouseOpinion" column="warehouseOpinion"/>-->
+<!--        <result property="procurementOpinion" column="procurementOpinion"/>-->
+<!--        <collection property="Items" column="id" javaType="ApplyItem" select="getApplyItem"/>-->
+<!--    </resultMap>-->
+
+<!--    <select id="getApplyItem" resultType="ApplyItem" >-->
+<!--        select *-->
+<!--        from applyitem-->
+<!--        where applyOrderId = #{id}-->
+<!--    </select>-->
+    
     <!--这是一个查询语句-->
     <select id="queryApplyOrder" resultType="ApplyOrder">
         select * from applyorder

@@ -36,8 +36,8 @@
     </delete>
     <!--这是一个插入语句-->
     <insert id="addApplyOrder" parameterType="ApplyOrder">
-        insert into applyorder (id,applyDepartment,applyTime,applyName,generalManagerOpinion,mineManagerOpinion,departmentOpinion,warehouseOpinion,procurementOpinion)
-        values (#{id},#{applyDepartment},#{applyTime},#{applyName},#{generalManagerOpinion},#{mineManagerOpinion},#{departmentOpinion},#{warehouseOpinion},#{procurementOpinion})
+        insert into applyorder (applyDepartment,applyTime,applyName,generalManagerOpinion,mineManagerOpinion,departmentOpinion,warehouseOpinion,procurementOpinion)
+        values (#{applyDepartment},#{applyTime},#{applyName},#{generalManagerOpinion},#{mineManagerOpinion},#{departmentOpinion},#{warehouseOpinion},#{procurementOpinion})
     </insert>
     <!--这是一个更新语句-->
     <update id="updateApplyOrder" parameterType="ApplyOrder">

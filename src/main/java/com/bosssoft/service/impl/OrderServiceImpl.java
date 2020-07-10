@@ -1,7 +1,9 @@
-package com.bosssoft.service;
+package com.bosssoft.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.bosssoft.entity.ApplyItem;
+import com.bosssoft.service.ApplyOrderService;
+import com.bosssoft.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +21,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private HttpSession session;
+    @Autowired
+    private ApplyOrderService applyOrderService;
 
     private HashMap<Long,ApplyItem> itemlist;
 
@@ -54,9 +58,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public String settle() {
+        applyOrderService.settleOrder();
         return null;
     }
 
+    @Override
     public HashMap<Long,ApplyItem> getItemlist(){
         itemlist =(HashMap) session.getAttribute("itemlist");
         if(itemlist == null){

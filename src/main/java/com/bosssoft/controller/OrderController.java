@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @description
  */
 @RestController
+@RequestMapping("/order")
 public class OrderController {
     @Autowired
     private OrderService orderService;
@@ -41,5 +42,10 @@ public class OrderController {
     @RequestMapping("/list")
     public String list(){
         return orderService.query();
+    }
+
+    @RequestMapping("/settle")
+    public String settle(){
+        return orderService.settle();
     }
 }

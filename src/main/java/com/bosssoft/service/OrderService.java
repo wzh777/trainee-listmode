@@ -2,6 +2,8 @@ package com.bosssoft.service;
 
 import com.bosssoft.entity.ApplyItem;
 
+import java.util.HashMap;
+
 /**
  * @author 吴志鸿
  * @date 2020/7/9
@@ -13,4 +15,5 @@ public interface OrderService {
     boolean editnumber(Long id,int number);
     String query();
     String settle();
+    HashMap<Long,ApplyItem> getItemlist();
 }

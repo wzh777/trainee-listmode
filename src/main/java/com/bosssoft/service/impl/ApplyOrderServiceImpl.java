@@ -1,5 +1,6 @@
 package com.bosssoft.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.bosssoft.dao.ApplyItemDao;
 import com.bosssoft.dao.ApplyOrderDao;
 import com.bosssoft.entity.ApplyItem;
@@ -28,8 +29,8 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
     private OrderService orderService;
 
     @Override
-    public List<ApplyOrder> queryApplyOrder() {
-        return applyOrderDao.queryApplyOrder();
+    public String queryApplyOrder() {
+        return JSON.toJSONString(applyOrderDao.queryApplyOrder());
     }
 
     @Override

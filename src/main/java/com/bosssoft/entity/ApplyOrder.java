@@ -2,6 +2,7 @@ package com.bosssoft.entity;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -48,5 +49,5 @@ public class ApplyOrder {
     /**
      * 物品申请清单列表
      */
-    private HashMap<Long, ApplyItem> Items;
+    private ArrayList<ApplyItem> items;
 }

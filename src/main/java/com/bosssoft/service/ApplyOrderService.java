@@ -10,7 +10,7 @@ import java.util.List;
  * @description
  */
 public interface ApplyOrderService {
-    List<ApplyOrder> queryApplyOrder();
+    String queryApplyOrder();
     boolean addApplyOrder(ApplyOrder applyOrder);
     boolean updateApplyOrder(ApplyOrder applyOrder);
     boolean deleteApplyOrder(int id);

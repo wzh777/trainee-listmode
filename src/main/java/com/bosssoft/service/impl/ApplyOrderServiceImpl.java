@@ -24,31 +24,40 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
     private ApplyOrderDao applyOrderDao;
     @Autowired
     private ApplyItemDao applyItemDao;
-
     @Autowired
     private OrderService orderService;
-
+    /**
+     * 查询返回出申请表对应信息
+     */
     @Override
     public String queryApplyOrder(Long id) {
         ApplyOrder applyOrder = applyOrderDao.queryApplyOrder(id);
         return JSON.toJSONString(applyOrder);
     }
-
+    /**
+     * 添加新的申请记录到数据库
+     */
     @Override
     public boolean addApplyOrder(ApplyOrder applyOrder) {
         return applyOrderDao.addApplyOrder(applyOrder);
     }
-
+    /**
+     * 更新报表信息
+     */
     @Override
     public boolean updateApplyOrder(ApplyOrder applyOrder) {
         return applyOrderDao.updateApplyOrder(applyOrder);
     }
-
+    /**
+     * 删除报表
+     */
     @Override
     public boolean deleteApplyOrder(int id) {
         return applyOrderDao.deleteApplyOrder(id);
     }
-
+    /**
+     * 物品申请清单提交时形成申请报表，存入数据库
+     */
     @Override
     public void settleOrder(){
         ApplyOrder applyOrder = new ApplyOrder();

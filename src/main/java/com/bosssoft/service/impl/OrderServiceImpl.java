@@ -26,7 +26,9 @@ public class OrderServiceImpl implements OrderService {
      * 模拟物品申请清单
      */
     private HashMap<Long,ApplyItem> itemlist;
-
+    /**
+     * 添加单条申请记录到物品清单
+     */
     @Override
     public boolean add(ApplyItem applyItem) {
         getItemlist();
@@ -34,14 +36,18 @@ public class OrderServiceImpl implements OrderService {
         getItemlist();
         return true;
     }
-
+    /**
+     * 删除单条物品申请记录
+     */
     @Override
     public boolean remove(Long id) {
         getItemlist();
         itemlist.remove(id);
         return true;
     }
-
+    /**
+     * 修改物品申请记录数量
+     */
     @Override
     public boolean editnumber(Long id, int number) {
         getItemlist();
@@ -49,19 +55,25 @@ public class OrderServiceImpl implements OrderService {
         applyItem.setNumber(number);
         return true;
     }
-
+    /**
+     * 查询物品申请清单
+     */
     @Override
     public String query() {
         getItemlist();
         return JSON.toJSONString(itemlist.entrySet().toString());
     }
-
+    /**
+     * 提交物品清单
+     */
     @Override
     public String settle() {
         applyOrderService.settleOrder();
         return null;
     }
-
+    /**
+     * 获得物品清单
+     */
     @Override
     public HashMap<Long,ApplyItem> getItemlist(){
         itemlist =(HashMap) session.getAttribute("itemlist");

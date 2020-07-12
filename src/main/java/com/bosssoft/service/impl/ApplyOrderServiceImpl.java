@@ -16,7 +16,7 @@ import java.util.*;
 /**
  * @author 吴志鸿
  * @date 2020/7/10
- * @description
+ * @description 申请清单业务层实现类
  */
 @Service
 public class ApplyOrderServiceImpl implements ApplyOrderService {
@@ -29,8 +29,9 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
     private OrderService orderService;
 
     @Override
-    public String queryApplyOrder() {
-        return JSON.toJSONString(applyOrderDao.queryApplyOrder());
+    public String queryApplyOrder(Long id) {
+        ApplyOrder applyOrder = applyOrderDao.queryApplyOrder(id);
+        return JSON.toJSONString(applyOrder);
     }
 
     @Override
@@ -53,7 +54,7 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
         ApplyOrder applyOrder = new ApplyOrder();
         HashMap<Long, ApplyItem> itemlist = orderService.getItemlist();
 
-        ApplyItem applyItem = null;
+
 
         /**
          * 申请部门
@@ -62,7 +63,7 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
         /**
          * 申请时间
          */
-        applyOrder.setApplyTime(new Date());
+        applyOrder.setApplyTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         /**
          * 申请人
          */
@@ -89,10 +90,12 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
         applyOrder.setProcurementOpinion("同意");
         applyOrderDao.addApplyOrder(applyOrder);
 
+        /**
+         * 遍历itemlist得到物品申请清单出入数据库
+         */
         for (Map.Entry<Long,ApplyItem> entry:itemlist.entrySet()){
             applyItemDao.addApplyItem(entry.getValue());
         }
-
 
     }
 }

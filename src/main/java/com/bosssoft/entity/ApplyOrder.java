@@ -3,8 +3,7 @@ package com.bosssoft.entity;
 import lombok.Data;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
+
 
 /**
  * @author 吴志鸿
@@ -21,7 +20,7 @@ public class ApplyOrder {
     /**
      * 申请时间
      */
-    private Date applyTime;
+    private String applyTime;
     /**
      * 申请人
      */
@@ -50,4 +49,6 @@ public class ApplyOrder {
      * 物品申请清单列表
      */
     private ArrayList<ApplyItem> items;
+
+
 }

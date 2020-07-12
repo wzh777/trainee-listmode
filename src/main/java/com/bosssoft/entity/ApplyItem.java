@@ -12,7 +12,7 @@ public class ApplyItem {
     private long id;
 
     /**
-     * 申请报表id
+     * 申请报表id，与部门id对应
      */
     private long applyOrderId;
 

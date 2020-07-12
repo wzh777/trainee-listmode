@@ -6,15 +6,13 @@ import com.bosssoft.service.ApplyOrderService;
 import com.bosssoft.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 /**
  * @author 吴志鸿
  * @date 2020/7/9
- * @description
+ * @description 物品申请清单服务层实现类
  */
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -24,8 +22,10 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private ApplyOrderService applyOrderService;
 
+    /**
+     * 模拟物品申请清单
+     */
     private HashMap<Long,ApplyItem> itemlist;
-
 
     @Override
     public boolean add(ApplyItem applyItem) {
@@ -66,7 +66,7 @@ public class OrderServiceImpl implements OrderService {
     public HashMap<Long,ApplyItem> getItemlist(){
         itemlist =(HashMap) session.getAttribute("itemlist");
         if(itemlist == null){
-            itemlist = new HashMap<Long,ApplyItem>();
+            itemlist = new HashMap<>();
             session.setAttribute("itemlist",itemlist);
         }
         return itemlist;

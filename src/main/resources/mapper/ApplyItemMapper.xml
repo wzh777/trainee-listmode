@@ -6,21 +6,21 @@
 <!--绑定一个对应的Dao/Mapper接口-->
 <mapper namespace="com.bosssoft.dao.ApplyItemDao">
 
-    <!--这是一个查询语句-->
+    <!--查询所有物品申请记录-->
     <select id="queryApplyItem" resultType="ApplyItem">
         select * from applyitem
     </select>
 
-    <!--这是一个删除语句-->
+    <!--根据id删除物品申请记录-->
     <delete id="deleteApplyItem" parameterType="int">
         delete from applyitem where id = #{id}
     </delete>
-    <!--这是一个插入语句-->
+    <!--插入物品申请记录-->
     <insert id="addApplyItem" parameterType="ApplyItem">
         insert into applyitem (id,applyOrderId,goodsId,goodsName,goodsType,number,palace,usedate)
         values (#{id},#{applyOrderId},#{goodsId},#{goodsName},#{goodsType},#{number},#{palace},#{usedate})
     </insert>
-    <!--这是一个更新语句-->
+    <!--更新物品申请记录-->
     <update id="updateApplyItem" parameterType="ApplyItem">
         update applyitem set  goodsId=#{goodsId},applyOrderId=#{applyOrderId},goodsName=#{goodsName},goodsType=#{goodsType},number=#{number},palace=#{palace},usedate=#{usedate}
         where id = #{id}

@@ -3,7 +3,7 @@ package com.bosssoft.dao;
 import com.bosssoft.entity.ApplyOrder;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-import java.util.List;
+
 
 /**
  * @author 吴志鸿
@@ -13,8 +13,20 @@ import java.util.List;
 @Mapper
 @Repository
 public interface ApplyOrderDao {
-    List<ApplyOrder> queryApplyOrder();
+    /**
+     * 查询返回出申请表对应信息
+     */
+    ApplyOrder queryApplyOrder(Long id);
+    /**
+     * 添加新的申请记录到数据库
+     */
     boolean addApplyOrder(ApplyOrder applyOrder);
+    /**
+     * 更新报表信息
+     */
     boolean updateApplyOrder(ApplyOrder applyOrder);
+    /**
+     * 删除报表
+     */
     boolean deleteApplyOrder(int id);
 }

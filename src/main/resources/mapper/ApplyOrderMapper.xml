@@ -5,7 +5,7 @@
 
 <!--绑定一个对应的Dao/Mapper接口-->
 <mapper namespace="com.bosssoft.dao.ApplyOrderDao">
-
+    <!--实现一对多查询映射，返回ArrayList-->
     <resultMap id="ApplyInfo" type="ApplyOrder">
         <id property="id" column="id"/>
         <result property="applyDepartment" column="applyDepartment"/>
@@ -18,28 +18,28 @@
         <result property="procurementOpinion" column="procurementOpinion"/>
         <collection property="items" column="id" javaType="java.util.ArrayList" select="getApplyItem"/>
     </resultMap>
-
+    <!--查询部们id对应的所有物品申请记录-->
     <select id="getApplyItem" resultType="ApplyItem" >
         select *
         from applyitem
         where applyOrderId = #{id}
     </select>
 
-    <!--这是一个查询语句-->
+    <!--查询部门的申请记录-->
     <select id="queryApplyOrder" resultMap="ApplyInfo">
-        select * from applyorder
+        select * from applyorder where id=#{id}
     </select>
 
-    <!--这是一个删除语句-->
+    <!--删除部门的申请记录-->
     <delete id="deleteApplyOrder" parameterType="int">
         delete from applyorder where id = #{id}
     </delete>
-    <!--这是一个插入语句-->
+    <!--插入部门申请记录-->
     <insert id="addApplyOrder" parameterType="ApplyOrder">
         insert into applyorder (applyDepartment,applyTime,applyName,generalManagerOpinion,mineManagerOpinion,departmentOpinion,warehouseOpinion,procurementOpinion)
         values (#{applyDepartment},#{applyTime},#{applyName},#{generalManagerOpinion},#{mineManagerOpinion},#{departmentOpinion},#{warehouseOpinion},#{procurementOpinion})
     </insert>
-    <!--这是一个更新语句-->
+    <!--更新部门申请记录-->
     <update id="updateApplyOrder" parameterType="ApplyOrder">
         update applyorder set applyDepartment=#{applyDepartment},applyTime=#{applyTime},applyName=#{applyName},generalManagerOpinion=#{generalManagerOpinion},mineManagerOpinion=#{mineManagerOpinion},departmentOpinion=#{departmentOpinion},warehouseOpinion=#{warehouseOpinion},procurementOpinion=#{procurementOpinion}
         where id = #{id}

@@ -14,6 +14,10 @@ import java.util.ArrayList;
 public class ApplyOrder {
     private Long id;
     /**
+     * 部门ID
+     */
+    private Long orderId;
+    /**
      * 申请部门
      */
     private String applyDepartment;

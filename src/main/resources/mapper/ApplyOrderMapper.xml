@@ -16,32 +16,32 @@
         <result property="departmentOpinion" column="departmentOpinion"/>
         <result property="warehouseOpinion" column="warehouseOpinion"/>
         <result property="procurementOpinion" column="procurementOpinion"/>
-        <collection property="items" column="id" javaType="java.util.ArrayList" select="getApplyItem"/>
+        <collection property="items" column="orderId" javaType="java.util.ArrayList" select="getApplyItem"/>
     </resultMap>
     <!--查询部们id对应的所有物品申请记录-->
     <select id="getApplyItem" resultType="ApplyItem" >
         select *
         from applyitem
-        where applyOrderId = #{id}
+        where applyOrderId = #{orderId}
     </select>
 
     <!--查询部门的申请记录-->
     <select id="queryApplyOrder" resultMap="ApplyInfo">
-        select * from applyorder where id=#{id}
+        select * from applyorder where orderId=#{orderId}
     </select>
 
     <!--删除部门的申请记录-->
     <delete id="deleteApplyOrder" parameterType="int">
-        delete from applyorder where id = #{id}
+        delete from applyorder where orderId = #{orderId}
     </delete>
     <!--插入部门申请记录-->
     <insert id="addApplyOrder" parameterType="ApplyOrder">
-        insert into applyorder (applyDepartment,applyTime,applyName,generalManagerOpinion,mineManagerOpinion,departmentOpinion,warehouseOpinion,procurementOpinion)
-        values (#{applyDepartment},#{applyTime},#{applyName},#{generalManagerOpinion},#{mineManagerOpinion},#{departmentOpinion},#{warehouseOpinion},#{procurementOpinion})
+        insert into applyorder (applyDepartment,applyTime,applyName,generalManagerOpinion,mineManagerOpinion,departmentOpinion,warehouseOpinion,procurementOpinion,orderId)
+        values (#{applyDepartment},#{applyTime},#{applyName},#{generalManagerOpinion},#{mineManagerOpinion},#{departmentOpinion},#{warehouseOpinion},#{procurementOpinion},#{orderId})
     </insert>
     <!--更新部门申请记录-->
     <update id="updateApplyOrder" parameterType="ApplyOrder">
         update applyorder set applyDepartment=#{applyDepartment},applyTime=#{applyTime},applyName=#{applyName},generalManagerOpinion=#{generalManagerOpinion},mineManagerOpinion=#{mineManagerOpinion},departmentOpinion=#{departmentOpinion},warehouseOpinion=#{warehouseOpinion},procurementOpinion=#{procurementOpinion}
-        where id = #{id}
+        where orderId = #{orderId}
     </update>
 </mapper>

@@ -64,7 +64,10 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
         HashMap<Long, ApplyItem> itemlist = orderService.getItemlist();
 
 
-
+        /**
+         * 部门id
+         */
+        applyOrder.setOrderId(2020070123L);
         /**
          * 申请部门
          */
@@ -103,7 +106,9 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
          * 遍历itemlist得到物品申请清单出入数据库
          */
         for (Map.Entry<Long,ApplyItem> entry:itemlist.entrySet()){
-            applyItemDao.addApplyItem(entry.getValue());
+            ApplyItem item = entry.getValue();
+            item.setApplyOrderId(2020070123L);
+            applyItemDao.addApplyItem(item);
         }
 
     }

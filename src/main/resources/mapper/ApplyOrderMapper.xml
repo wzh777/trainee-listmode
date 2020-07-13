@@ -18,6 +18,7 @@
         <result property="procurementOpinion" column="procurementOpinion"/>
         <collection property="items" column="orderId" javaType="java.util.ArrayList" select="getApplyItem"/>
     </resultMap>
+
     <!--查询部们id对应的所有物品申请记录-->
     <select id="getApplyItem" resultType="ApplyItem" >
         select *
@@ -34,14 +35,17 @@
     <delete id="deleteApplyOrder" parameterType="int">
         delete from applyorder where orderId = #{orderId}
     </delete>
+
     <!--插入部门申请记录-->
     <insert id="addApplyOrder" parameterType="ApplyOrder">
         insert into applyorder (applyDepartment,applyTime,applyName,generalManagerOpinion,mineManagerOpinion,departmentOpinion,warehouseOpinion,procurementOpinion,orderId)
         values (#{applyDepartment},#{applyTime},#{applyName},#{generalManagerOpinion},#{mineManagerOpinion},#{departmentOpinion},#{warehouseOpinion},#{procurementOpinion},#{orderId})
     </insert>
+
     <!--更新部门申请记录-->
     <update id="updateApplyOrder" parameterType="ApplyOrder">
         update applyorder set applyDepartment=#{applyDepartment},applyTime=#{applyTime},applyName=#{applyName},generalManagerOpinion=#{generalManagerOpinion},mineManagerOpinion=#{mineManagerOpinion},departmentOpinion=#{departmentOpinion},warehouseOpinion=#{warehouseOpinion},procurementOpinion=#{procurementOpinion}
         where orderId = #{orderId}
     </update>
+
 </mapper>

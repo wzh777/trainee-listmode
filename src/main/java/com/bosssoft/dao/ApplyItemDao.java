@@ -18,14 +18,17 @@ public interface ApplyItemDao {
      * 查询物品清单
      */
     List<ApplyItem> queryApplyItem();
+
     /**
      * 添加物品清单
      */
     boolean addApplyItem(ApplyItem applyItem);
+
     /**
      * 修改物品清单
      */
     boolean updateApplyItem(ApplyItem applyItem);
+
     /**
      * 删除物品清单
      */

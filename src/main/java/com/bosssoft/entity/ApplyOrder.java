@@ -17,38 +17,47 @@ public class ApplyOrder {
      * 部门ID
      */
     private Long orderId;
+
     /**
      * 申请部门
      */
     private String applyDepartment;
+
     /**
      * 申请时间
      */
     private String applyTime;
+
     /**
      * 申请人
      */
     private String applyName;
+
     /**
      * 总经理意见
      */
     private String generalManagerOpinion;
+
     /**
      * 矿长审批意见
      */
     private String mineManagerOpinion;
+
     /**
      * 部门审批意见
      */
     private String departmentOpinion;
+
     /**
      * 仓库核查意见
      */
     private String warehouseOpinion;
+
     /**
      * 采购部经办意见
      */
     private String procurementOpinion;
+
     /**
      * 物品申请清单列表
      */

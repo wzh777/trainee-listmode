@@ -22,10 +22,13 @@ import java.util.*;
 public class ApplyOrderServiceImpl implements ApplyOrderService {
     @Autowired
     private ApplyOrderDao applyOrderDao;
+
     @Autowired
     private ApplyItemDao applyItemDao;
+
     @Autowired
     private OrderService orderService;
+
     /**
      * 查询返回出申请表对应信息
      */
@@ -34,6 +37,7 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
         ApplyOrder applyOrder = applyOrderDao.queryApplyOrder(id);
         return JSON.toJSONString(applyOrder);
     }
+
     /**
      * 添加新的申请记录到数据库
      */
@@ -41,6 +45,7 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
     public boolean addApplyOrder(ApplyOrder applyOrder) {
         return applyOrderDao.addApplyOrder(applyOrder);
     }
+
     /**
      * 更新报表信息
      */
@@ -48,6 +53,7 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
     public boolean updateApplyOrder(ApplyOrder applyOrder) {
         return applyOrderDao.updateApplyOrder(applyOrder);
     }
+
     /**
      * 删除报表
      */
@@ -55,6 +61,7 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
     public boolean deleteApplyOrder(int id) {
         return applyOrderDao.deleteApplyOrder(id);
     }
+
     /**
      * 物品申请清单提交时形成申请报表，存入数据库
      */
@@ -62,8 +69,6 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
     public void settleOrder(){
         ApplyOrder applyOrder = new ApplyOrder();
         HashMap<Long, ApplyItem> itemlist = orderService.getItemlist();
-
-
         /**
          * 部门id
          */

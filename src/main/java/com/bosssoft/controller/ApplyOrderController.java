@@ -17,11 +17,12 @@ public class ApplyOrderController {
 
     @Autowired
     private ApplyOrderService applyOrderService;
+
     /**
      * 查询返回出申请表对应信息
      */
     @GetMapping("/query")
-    public String query(@RequestBody ApplyOrder applyOrder){
+    public String query(@RequestBody ApplyOrder applyOrder) {
         return applyOrderService.queryApplyOrder(applyOrder.getId());
     }
 }

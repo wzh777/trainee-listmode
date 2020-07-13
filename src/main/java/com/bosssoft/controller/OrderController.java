@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class OrderController {
     @Autowired
     private OrderService orderService;
+
     /**
      * 添加单条申请记录到物品清单
      */
@@ -23,6 +24,7 @@ public class OrderController {
         orderService.add(applyItem);
         return "add applyitem success, info:" + applyItem;
     }
+
     /**
      * 删除单条物品申请记录
      */
@@ -31,6 +33,7 @@ public class OrderController {
         orderService.remove(applyItem.getId());
         return "remove applyitem info:" + applyItem.getId();
     }
+
     /**
      * 修改物品申请记录数量
      */
@@ -42,6 +45,7 @@ public class OrderController {
             return "editnumber failed!";
         }
     }
+
     /**
      * 查询物品申请清单
      */
@@ -49,6 +53,7 @@ public class OrderController {
     public String list(){
         return orderService.query();
     }
+
     /**
      * 提交物品清单
      */

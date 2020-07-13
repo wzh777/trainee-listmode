@@ -15,11 +15,13 @@
     <delete id="deleteApplyItem" parameterType="int">
         delete from applyitem where id = #{id}
     </delete>
+
     <!--插入物品申请记录-->
     <insert id="addApplyItem" parameterType="ApplyItem">
         insert into applyitem (id,applyOrderId,goodsId,goodsName,goodsType,number,palace,usedate)
         values (#{id},#{applyOrderId},#{goodsId},#{goodsName},#{goodsType},#{number},#{palace},#{usedate})
     </insert>
+
     <!--更新物品申请记录-->
     <update id="updateApplyItem" parameterType="ApplyItem">
         update applyitem set  goodsId=#{goodsId},applyOrderId=#{applyOrderId},goodsName=#{goodsName},goodsType=#{goodsType},number=#{number},palace=#{palace},usedate=#{usedate}

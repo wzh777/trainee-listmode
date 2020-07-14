@@ -15,21 +15,6 @@ import java.io.IOException;
  */
 public class JsonHtmlXssDeserializer extends JsonSerializer<String> {
 
-
-//    @Override
-//    public Class<String> handledType() {
-//        return String.class;
-//    }
-//
-//    @Override
-//    public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
-//        String value = jsonParser.getValueAsString();
-//        if (value != null) {
-//            return StringEscapeUtils.escapeHtml4(value.toString());
-//        }
-//        return value;
-//    }
-
     @Override
     public Class<String> handledType() {
         return String.class;

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequestWrapper;
 /**
  * @author 吴志鸿
  * @date 2020/7/14
- * @description 重写了getParameter，getParameterValues，getHeader等方法，对http请求内的参数进行了过滤
+ * @description 重写了getParameter，getParameterValues方法，对http请求内的参数进行了过滤
  */
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
 

@@ -9,7 +9,7 @@ import org.jsoup.safety.Whitelist;
 /**
  * @author 吴志鸿
  * @date 2020/7/14
- * @description xss非法攻击标签类
+ * @description 使用Jsoup过滤非法标签
  */
 @Slf4j
 public class JsoupUtil {

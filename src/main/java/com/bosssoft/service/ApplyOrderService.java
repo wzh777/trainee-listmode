@@ -32,5 +32,5 @@ public interface ApplyOrderService {
     /**
      * 物品申请清单提交时形成申请报表，存入数据库
      */
-    void settleOrder();
+    Long settleOrder();
 }

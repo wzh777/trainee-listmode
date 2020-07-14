@@ -2,6 +2,7 @@ package com.bosssoft.controller;
 
 import com.bosssoft.entity.ApplyItem;
 import com.bosssoft.service.OrderService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * @date 2020/7/9
  * @description 申请报表controller层
  */
+@Slf4j
 @RestController
 @RequestMapping("/order")
 public class OrderController {
@@ -20,7 +22,7 @@ public class OrderController {
      * 添加单条申请记录到物品清单
      */
     @PostMapping("/add")
-    public String add(@RequestBody ApplyItem applyItem){
+    public String add(@RequestBody ApplyItem applyItem) {
         orderService.add(applyItem);
         return "add applyitem success, info:" + applyItem;
     }
@@ -29,7 +31,7 @@ public class OrderController {
      * 删除单条物品申请记录
      */
     @PostMapping("/remove")
-    public String remove(@RequestBody ApplyItem applyItem){
+    public String remove(@RequestBody ApplyItem applyItem) {
         orderService.remove(applyItem.getId());
         return "remove applyitem info:" + applyItem.getId();
     }
@@ -38,10 +40,10 @@ public class OrderController {
      * 修改物品申请记录数量
      */
     @PostMapping("/editnumber")
-    public String editnumber(@RequestBody ApplyItem applyItem){
-        if(orderService.editnumber(applyItem.getId(), applyItem.getNumber())) {
+    public String editnumber(@RequestBody ApplyItem applyItem) {
+        if (orderService.editnumber(applyItem.getId(), applyItem.getNumber())) {
             return "editnumber success!";
-        }else {
+        } else {
             return "editnumber failed!";
         }
     }
@@ -50,7 +52,7 @@ public class OrderController {
      * 查询物品申请清单
      */
     @GetMapping("/list")
-    public String list(){
+    public String list() {
         return orderService.query();
     }
 
@@ -58,7 +60,7 @@ public class OrderController {
      * 提交物品清单
      */
     @GetMapping("/settle")
-    public String settle(){
-        return orderService.settle();
+    public String settle() {
+        return "settle success,order id = " + orderService.settle();
     }
 }

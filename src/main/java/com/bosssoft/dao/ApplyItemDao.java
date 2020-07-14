@@ -1,9 +1,9 @@
 package com.bosssoft.dao;
 
 import com.bosssoft.entity.ApplyItem;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 /**

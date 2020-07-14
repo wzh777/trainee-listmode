@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class ApplyOrder {
     private Long id;
     /**
-     * 部门ID
+     * 订单号id
      */
     private Long orderId;
 

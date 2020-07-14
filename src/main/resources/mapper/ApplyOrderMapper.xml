@@ -8,6 +8,7 @@
     <!--实现一对多查询映射，返回ArrayList-->
     <resultMap id="ApplyInfo" type="ApplyOrder">
         <id property="id" column="id"/>
+        <result property="orderId" column="orderId"/>
         <result property="applyDepartment" column="applyDepartment"/>
         <result property="applyTime" column="applyTime"/>
         <result property="applyName" column="applyName"/>
@@ -20,7 +21,7 @@
     </resultMap>
 
     <!--查询部们id对应的所有物品申请记录-->
-    <select id="getApplyItem" resultType="ApplyItem" >
+    <select id="getApplyItem" resultType="ApplyItem">
         select *
         from applyitem
         where applyOrderId = #{orderId}

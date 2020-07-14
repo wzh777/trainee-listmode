@@ -23,7 +23,7 @@ public interface OrderService {
     /**
      * 修改物品申请记录数量
      */
-    boolean editnumber(Long id,int number);
+    boolean editnumber(Long id, int number);
 
     /**
      * 查询物品申请清单
@@ -33,10 +33,10 @@ public interface OrderService {
     /**
      * 提交物品清单
      */
-    String settle();
+    Long settle();
 
     /**
      * 获得物品清单
      */
-    HashMap<Long,ApplyItem> getItemlist();
+    HashMap<Long, ApplyItem> getItemlist();
 }

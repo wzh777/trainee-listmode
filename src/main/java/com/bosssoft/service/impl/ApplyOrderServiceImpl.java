@@ -7,6 +7,7 @@ import com.bosssoft.entity.ApplyItem;
 import com.bosssoft.entity.ApplyOrder;
 import com.bosssoft.service.ApplyOrderService;
 import com.bosssoft.service.OrderService;
+import com.bosssoft.util.SnowFlake;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,13 +67,20 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
      * 物品申请清单提交时形成申请报表，存入数据库
      */
     @Override
-    public void settleOrder(){
+    public Long settleOrder() {
         ApplyOrder applyOrder = new ApplyOrder();
         HashMap<Long, ApplyItem> itemlist = orderService.getItemlist();
+
         /**
-         * 部门id
+         * 使用雪花算法生成订单号
          */
-        applyOrder.setOrderId(2020070123L);
+        SnowFlake snowFlake = new SnowFlake(1, 1, 1);
+        long orderid = snowFlake.nextId();
+
+        /**
+         * 订单号
+         */
+        applyOrder.setOrderId(orderid);
         /**
          * 申请部门
          */
@@ -110,11 +118,12 @@ public class ApplyOrderServiceImpl implements ApplyOrderService {
         /**
          * 遍历itemlist得到物品申请清单出入数据库
          */
-        for (Map.Entry<Long,ApplyItem> entry:itemlist.entrySet()){
+        for (Map.Entry<Long, ApplyItem> entry : itemlist.entrySet()) {
             ApplyItem item = entry.getValue();
-            item.setApplyOrderId(2020070123L);
+            item.setApplyOrderId(orderid);
             applyItemDao.addApplyItem(item);
         }
 
+        return orderid;
     }
 }

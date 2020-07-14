@@ -6,6 +6,7 @@ import com.bosssoft.service.ApplyOrderService;
 import com.bosssoft.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
@@ -26,7 +27,7 @@ public class OrderServiceImpl implements OrderService {
     /**
      * 模拟物品申请清单
      */
-    private HashMap<Long,ApplyItem> itemlist;
+    private HashMap<Long, ApplyItem> itemlist;
 
     /**
      * 添加单条申请记录到物品清单
@@ -34,8 +35,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public boolean add(ApplyItem applyItem) {
         getItemlist();
-        itemlist.put(applyItem.getId(),applyItem);
-        getItemlist();
+        itemlist.put(applyItem.getId(), applyItem);
         return true;
     }
 
@@ -73,20 +73,19 @@ public class OrderServiceImpl implements OrderService {
      * 提交物品清单
      */
     @Override
-    public String settle() {
-        applyOrderService.settleOrder();
-        return null;
+    public Long settle() {
+        return applyOrderService.settleOrder();
     }
 
     /**
      * 获得物品清单
      */
     @Override
-    public HashMap<Long,ApplyItem> getItemlist(){
-        itemlist =(HashMap) session.getAttribute("itemlist");
-        if(itemlist == null){
+    public HashMap<Long, ApplyItem> getItemlist() {
+        itemlist = (HashMap) session.getAttribute("itemlist");
+        if (itemlist == null) {
             itemlist = new HashMap<>();
-            session.setAttribute("itemlist",itemlist);
+            session.setAttribute("itemlist", itemlist);
         }
         return itemlist;
     }

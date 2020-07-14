@@ -12,11 +12,11 @@ import java.util.ArrayList;
  */
 @Data
 public class ApplyOrder {
-    private Long id;
+    private long id;
     /**
      * 订单号id
      */
-    private Long orderId;
+    private long orderId;
 
     /**
      * 申请部门

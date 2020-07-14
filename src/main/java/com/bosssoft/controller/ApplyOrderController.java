@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * @description 物品申请清单controller层
  */
 @RestController
-@RequestMapping("/applyorder")
+@RequestMapping(value = "/applyorder",produces = "application/json; charset=utf-8")
 public class ApplyOrderController {
 
     @Autowired

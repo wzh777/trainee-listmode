@@ -1,8 +1,7 @@
 package com.bosssoft.filter;
 
-import com.bosssoft.util.JsoupUtil;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
-
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
@@ -31,18 +30,18 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     public String getParameter(String name) {
         String value = super.getParameter(name);
         if (StringUtils.isNotBlank(value)) {
-            value = JsoupUtil.clean(value);
+            value = StringEscapeUtils.escapeHtml4(value);
         }
         return value;
     }
 
     @Override
     public String[] getParameterValues(String name) {
-        name = JsoupUtil.clean(name);
+        name = StringEscapeUtils.escapeHtml4(name);
         String[] arr = super.getParameterValues(name);
         if (arr != null) {
             for (int i = 0; i < arr.length; i++) {
-                arr[i] = JsoupUtil.clean(arr[i]);
+                arr[i] = StringEscapeUtils.escapeHtml4(arr[i]);
             }
         }
         return arr;

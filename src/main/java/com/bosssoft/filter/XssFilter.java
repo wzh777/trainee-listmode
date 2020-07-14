@@ -1,14 +1,9 @@
 package com.bosssoft.filter;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
-import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
@@ -26,6 +21,7 @@ import java.io.IOException;
 @WebFilter
 @Component
 public class XssFilter implements Filter {
+
     private static Logger logger = LoggerFactory.getLogger(XssFilter.class);
 
     @Override
@@ -33,10 +29,7 @@ public class XssFilter implements Filter {
         if (logger.isDebugEnabled()) {
             logger.debug("xss filter is open");
         }
-
         HttpServletRequest req = (HttpServletRequest) request;
-
-
         XssHttpServletRequestWrapper xssRequest = new XssHttpServletRequestWrapper(req);
         filterChain.doFilter(xssRequest, response);
     }
@@ -49,19 +42,6 @@ public class XssFilter implements Filter {
     @Override
     public void destroy() {
         logger.info("filter destroy......");
-    }
-
-    @Bean
-    @Primary
-    public ObjectMapper xssObjectMapper(Jackson2ObjectMapperBuilder builder) {
-        //解析器
-        ObjectMapper objectMapper = builder.createXmlMapper(false).build();
-        //注册xss解析器
-        SimpleModule xssModule = new SimpleModule("JsonHtmlXssDeserializer");
-        xssModule.addSerializer(new JsonHtmlXssDeserializer());
-        objectMapper.registerModule(xssModule);
-        //返回
-        return objectMapper;
     }
 
 }

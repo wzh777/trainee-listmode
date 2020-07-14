@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Slf4j
 @RestController
-@RequestMapping("/order")
+@RequestMapping(value = "/order",produces = "application/json; charset=utf-8")
 public class OrderController {
     @Autowired
     private OrderService orderService;
@@ -21,7 +21,7 @@ public class OrderController {
     /**
      * 添加单条申请记录到物品清单
      */
-    @PostMapping("/add")
+    @PostMapping(value = "/add")
     public String add(@RequestBody ApplyItem applyItem) {
         orderService.add(applyItem);
         return "add applyitem success, info:" + applyItem;
@@ -34,12 +34,6 @@ public class OrderController {
     public String remove(@RequestBody ApplyItem applyItem) {
         orderService.remove(applyItem.getId());
         return "remove applyitem info:" + applyItem.getId();
-    }
-
-    @PostMapping("/xsstest")
-    public String xsstest(@RequestBody String name) {
-        log.info(name);
-        return name;
     }
 
     /**
